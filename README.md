@@ -1,7 +1,7 @@
 # yucca-hookka
 
 This proxy filters all the HTTP requests directed towards
-`https://userportal.smartdatanet.it/userportal/`.
+https://userportal.smartdatanet.it/userportal/.
 
 Most requests are proxied to the original website, except for
 requests for partials and javascript.
