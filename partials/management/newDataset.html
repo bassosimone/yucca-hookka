@@ -1,0 +1,87 @@
+
+<div ng-controller="ManagementNewDatasetWizardCtrl as datasetWizardCtrl">
+	<div class='container' ng-cloak>
+		<h3 class='content-edit-title'><span translate>MANAGEMENT_NEW_DATASET_TITLE</span></h3>
+	</div>
+	<div class='container'  ng-cloak>
+		<div class='row'>
+			<div class="col-sm-10  col-sm-offset-1 wizard-nav" >
+				<ul class="nav nav-pills " role="tablist">
+				  <li role="presentation" ng-class="{active: currentStep == 'start'}">
+				  	<a href='javascript:void(0)' ng-class="wizardSteps[0].style">
+				  		<span class='wizard-step-counter'>1</span>
+				  		<span class='wizard-step-label wizard-step-label-notlast'>Start</span> 
+				  	</a>
+				  </li>
+				  <li role="presentation" ng-class="{active: currentStep == 'requestor'}">
+				  	<a href='javascript:void(0)' ng-class="wizardSteps[1].style">
+				  		<span class='wizard-step-counter wizard-step-counter-notfirst'>2</span>
+				  		<span class='wizard-step-label wizard-step-label-notlast'>Requestor</span> 
+				  	</a>
+				  </li>
+				  <li role="presentation" ng-class="{active: currentStep == 'metadata'}">
+				  	<a href='javascript:void(0)' ng-class="wizardSteps[2].style">
+				  		<span class='wizard-step-counter wizard-step-counter-notfirst'>3</span>
+				  		<span class='wizard-step-label wizard-step-label-notlast'>Metadata</span>
+				  	</a>
+				  </li>
+				  <li role="presentation" ng-class="{active: currentStep == 'choosetype'}">
+				  	<a href='javascript:void(0)' ng-class="wizardSteps[3].style">
+				  		<span class='wizard-step-counter wizard-step-counter-notfirst'>4</span>
+				  		<span class='wizard-step-label wizard-step-label-notlast'>Type</span>
+				  	</a>
+				  </li>
+				  <li role="presentation" ng-class="{active: currentStep == 'upload'}">
+				  	<a href='javascript:void(0)' ng-class="wizardSteps[4].style">
+				  		<span class='wizard-step-counter wizard-step-counter-notfirst'>5</span>
+				  		<span class='wizard-step-label wizard-step-label-notlast'>File</span> 
+				  	</a>
+				  </li>
+				  <li role="presentation" ng-class="{active: currentStep == 'columns'}">
+				  	<a href='javascript:void(0)' ng-class="wizardSteps[5].style">
+				  		<span class='wizard-step-counter wizard-step-counter-notfirst'>6</span>
+				  		<span class='wizard-step-label'>Column</span>
+				  	</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<p>&nbsp;</p>
+	<div class='content-gray'>
+		<div class='container'>
+			<div class='alert alert-sandbox ng-hide' ng-show='tenant=="sandbox"'  ng-cloak>
+				<strong><i class="fa fa-exclamation-triangle"></i>&nbsp;<span translate>WARNING</span></strong>&nbsp;&nbsp;<span translate>MANAGEMENT_SANDBOX_WARNING</span>
+			</div>
+			<div class="alert alert-warning" ng-show='warningMessages.length>0'  ng-cloak>
+				<strong translate>WARNING</strong> <span translate>{{warningMessage}}</span>
+				<ul><li ng-repeat="warningMessage in warningMessages "><span translate>{{warningMessage}}</span></li></ul>
+			</div>
+			
+			
+			<div class='row'>
+				<div class="col-sm-10 col-sm-offset-1">
+					<carousel id='newDatasetWizard' interval="-1">
+						<slide  active="currentStep == 'start'">
+							<new-dataset-wizard-start></new-dataset-wizard-start>
+						</slide>
+						<slide active="currentStep == 'requestor'">
+							<new-dataset-wizard-requestor></new-dataset-wizard-requestor>
+						</slide>
+						<slide active="currentStep == 'metadata'">
+							<new-dataset-wizard-metadata></new-dataset-wizard-metadata>
+						</slide>
+						<slide active="currentStep == 'choosetype'">
+							<new-dataset-wizard-choosetype></new-dataset-wizard-choosetype>
+						</slide>
+						<slide active="currentStep == 'upload'">
+							<new-dataset-wizard-upload></new-dataset-wizard-upload>
+						</slide>
+						<slide active="currentStep == 'columns'">
+							<new-dataset-wizard-columns></new-dataset-wizard-columns>
+						</slide>
+					</carousel>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
