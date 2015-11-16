@@ -12,8 +12,8 @@ this file is served instead of the remote one.
 This helps to easily test changes of the [yucca-userportal](
 https://github.com/csipiemonte/yucca-userportal) portal.
 
-Used csipiemonte/yucca-userportal@80cb840d39 as starting point
-for copying the required partials and javascripts.
+Used [80cb840d39](https://github.com/csipiemonte/yucca-userportal/commit/80cb840d)
+as starting point for copying the required files.
 
 ## Usage
 
