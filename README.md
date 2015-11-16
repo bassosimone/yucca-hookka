@@ -7,7 +7,7 @@ Most requests are proxied to the original website, except for
 requests for partials and javascript.
 
 In that case, if a local file with the correct name exists,
-this file is served instead of the remove one.
+this file is served instead of the remote one.
 
 This helps to easily test changes of the [yucca-userportal](
 https://github.com/csipiemonte/yucca-userportal) portal.
