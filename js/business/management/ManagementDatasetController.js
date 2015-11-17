@@ -756,12 +756,14 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
 	$scope.previewBinaries = [];
 
 	if($scope.metadata==null){
-		$scope.metadata = {info:{}, configData: {}, opendata: {}};
+		$scope.metadata = {info:{}, configData: {}, opendata: {},
+                           personaldata: {}};
 		$scope.metadata.info.icon  = "img/dataset-icon-default.png";
-		$scope.metadata.info.visibility = "private";
+		$scope.metadata.info.visibility = "public";
 		$scope.metadata.info.importFileType = "csv";
 		$scope.metadata.opendata.language = 'it';
 		$scope.metadata.opendata.isOpendata = 'false';
+        $scope.metadata.personaldata.isPersonal = 'true';
 	}
 	else{
 		isClone = true;
@@ -793,6 +795,30 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
 			$scope.metadata.info.requestornEmail=$scope.user.email;
 		}
 	});
+
+    $scope.metadata.info.personalDataTags = [
+        {tagCode: "Antani"}
+    ];
+    $scope.personalDataTagList = [
+        "Antani",
+        "Mascetti",
+        "Sassaroli",
+        "Necchi"
+    ];
+    $scope.newPersonalDataTag = null;
+    $scope.addPersonalDataTag = function (tagCode) {
+        for (var i = 0; i < $scope.metadata.info.personalDataTags; ++i) {
+            if ($scope.metadata.info.personalDataTags.tagCode == tagCode) {
+                return false;
+            }
+        }
+        $scope.metadata.info.personalDataTags.push({"tagCode": tagCode});
+        return false;
+    };
+    $scope.removePersonalDataTag = function (index) {
+		$scope.metadata.info.personalDataTags.splice(index, 1);
+        return false;
+    };
 
 	$scope.newTag = null;
 	$scope.addTag = function(newTag){
