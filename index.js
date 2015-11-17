@@ -67,15 +67,27 @@ var maybeLocallyCached = function (request, response) {
         return;
     }
     console.log("- local filepath", filepath);
-    var stream = fs.createReadStream(filepath);
-    stream.on("error", function (error) {
-        if (error.code === 'ENOENT' && error.syscall === 'open') {
-            proxyRequest(request, response);  // Not stored in local cache
+    fs.lstat(filepath, function (error) {
+        if (error) {
+            if (error.code === 'ENOENT') {
+                proxyRequest(request, response);  // Not stored in local cache
+                return;
+            }
+            console.log("stat error", error);
+            serveError(response, 500);
             return;
         }
-        response.end();
+        var stream = fs.createReadStream(filepath);
+        stream.on("error", function (error) {
+            console.log("stream error", error);
+            response.end();
+        });
+        // XXX: defer loading local javascripts otherwise there is a
+        // race condition resulting in reference errors
+        setTimeout(function () {
+            stream.pipe(response);
+        }, (filepath.indexOf(".js") == (filepath.length - 3) ? 250 : 0));
     });
-    stream.pipe(response);
 };
 
 var server = http.createServer(function (request, response) {
