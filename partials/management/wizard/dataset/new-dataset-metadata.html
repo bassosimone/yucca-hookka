@@ -3,16 +3,19 @@
 	<div class='pull-right'><h3><small>Step 3/6</small></h3></div>
 </div>
 <form class="form-horizontal" role="form" name="metadataDatasetForm" ng-cloak>
+
 	<div class="form-group">
 		<label for="inputDatasetDesc" class="col-sm-2 control-label" translate>DATASET_FIELD_METADATA_DESCRIPTION</label>
 		<div class="col-sm-10">
 			<textarea id="inputDatasetDesc" class="form-control" rows="4" resize="none" ng-model="metadata.info.description" placeholder="{{'DATASET_FIELD_METADATA_DESCRIPTION'|translate}}"  maxlength="3000">
 			</textarea>
 		</div>
+
 		<div class="col-sm-5 form-hint">
 			<span class='hint-message' ng-bind-html="'MANAGEMENT_DESCRIPTION_ON_STORE_HINT'|translate"></span>  <i class="fa fa-long-arrow-right hint-arrow"></i>  <i class="fa fa-user hint-store-icon"></i>
 		</div>
 	</div>
+
 	<div class="form-group">
 		<label for="inputDatasetAddTag" class="col-sm-2 control-label" translate>DATASET_FIELD_METADATA_TAGS</label>
 		<div class="col-sm-10 text-left">
@@ -37,6 +40,7 @@
 			</p>
 		</div>
 	</div>			
+
 	<div class="form-group">
 		<label for="inputDatasetExternalReference" class="col-sm-2 control-label" translate>DATASET_FIELD_METADATA_EXTERNAL_REFERENCE</label>
 		<div class="col-sm-10">
@@ -44,6 +48,7 @@
 			ng-model="metadata.info.externalReference" >
 		</div>
 	</div>		
+
 	<div class="form-group">
 		<label for="inputDatasetIcon" class="col-sm-2 control-label"><span translate>STREAM_FIELD_ICON</span></label>
 		<div class="col-sm-3">
@@ -62,8 +67,8 @@
 		<div class="col-sm-3 col-sm-offset-1 text-right">
 			<img src="{{metadata.info.icon}}" alt="logo dataset" class='upload-icon-preview-img' >
 		</div>
-		
 	</div>			
+
 	<div class="form-group">
 		<label for="RadioGroupVisibility" class="col-sm-2 control-label"><span ng-bind-html="'DATASET_FIELD_METADATA_VISIBILITY'|translate"></span></label>
 		<div class="col-sm-10 text-left">
@@ -77,6 +82,7 @@
        		</label>
 		</div>
 	</div>
+
 	<div class="form-group" ng-show="metadata.info.visibility=='private'">
 		<label for="inputStreamAddTenantSharing" class="col-sm-2 control-label"><span translate>DATASET_FIELD_TENANTSSHARING</span></label>
 		<div class="col-sm-10 text-left">
@@ -99,6 +105,7 @@
  			</div>								
 		</div>
 	</div>	
+
 	<div ng-show="metadata.info.visibility=='public'">
 		<div class="form-group">
 			<label for="RadioGroupOpenadata" class="col-sm-2 control-label"><span ng-bind-html="'DATASET_FIELD_METADATA_OPENDATA'|translate"></span></label>
@@ -142,20 +149,8 @@
 				
 			</div>		
 		</div>
-		
 	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-			
+
 	<div class="form-group">
 		<label for="v" class="col-sm-2 control-label" translate>DATASET_FIELD_METADATA_LICENSE</label>
 		<div class="col-sm-10">
@@ -163,6 +158,7 @@
 			</textarea>
 		</div>
 	</div>			
+
 	<div class="form-group">
 		<label for="inputDatasetDisclaimer" class="col-sm-2 control-label" translate>DATASET_FIELD_METADATA_DISCLAIMER</label>
 		<div class="col-sm-10">
@@ -170,16 +166,19 @@
 			</textarea>
 		</div>
 	</div>			
+
 	<div class="form-group">
 		<label for="inputDatasetCopyright" class="col-sm-2 control-label" translate>DATASET_FIELD_METADATA_COPYRIGHT</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="inputDatasetCopyright" placeholder="{{'DATASET_FIELD_METADATA_COPYRIGHT'|translate}}" ng-model="metadata.info.copyright" >
 		</div>
 	</div>			
+
 	<div class="row">
 		<div class=" col-sm-12 form-toolbar">
 			<a ng-click='goToRequestor()' class="btn " translate>MANAGEMENT_NEW_DATASET_WIZARD_PREV</a>
 			<a ng-click='goToChooseType()' class="btn btn-wizard-next" ng-disabled="!isOwner() || metadataDatasetForm.$invalid " translate>MANAGEMENT_NEW_DATASET_WIZARD_NEXT</a>
 		</div>
 	</div>
+
 </form>
