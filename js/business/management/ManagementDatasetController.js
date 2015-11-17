@@ -807,8 +807,9 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
     ];
     $scope.newPersonalDataTag = null;
     $scope.addPersonalDataTag = function (tagCode) {
-        for (var i = 0; i < $scope.metadata.info.personalDataTags; ++i) {
-            if ($scope.metadata.info.personalDataTags.tagCode == tagCode) {
+        if (!tagCode) return false;
+        for (var i = 0; i < $scope.metadata.info.personalDataTags.length; ++i) {
+            if ($scope.metadata.info.personalDataTags[i].tagCode === tagCode) {
                 return false;
             }
         }
@@ -819,6 +820,7 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
 		$scope.metadata.info.personalDataTags.splice(index, 1);
         return false;
     };
+    $scope.newCustomPersonalDataTag = null;
 
 	$scope.newTag = null;
 	$scope.addTag = function(newTag){
