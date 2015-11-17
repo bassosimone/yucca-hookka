@@ -761,6 +761,7 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
 		$scope.metadata.info.icon  = "img/dataset-icon-default.png";
 		$scope.metadata.info.visibility = "public";
 		$scope.metadata.info.importFileType = "csv";
+		$scope.metadata.info.licenses = [];
 		$scope.metadata.opendata.language = 'it';
 		$scope.metadata.opendata.isOpendata = 'false';
         $scope.metadata.personaldata.isPersonal = 'true';
@@ -821,6 +822,27 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
         return false;
     };
     $scope.newCustomPersonalDataTag = null;
+
+    $scope.customLicense = 'false';
+    $scope.licenses = [
+        "IODL", "ISC", "MIT", "GPLv3"
+    ];
+    $scope.removeLicense = function (index) {
+		$scope.metadata.info.licenses(index, 1);
+        return false;
+    };
+    $scope.newLicense = null;
+    $scope.addLicense = function (licenseCode) {
+        if (!licenseCode) return false;
+        for (var i = 0; i < $scope.metadata.info.licenses.length; ++i) {
+            if ($scope.metadata.info.licenses[i].licenseCode === licenseCode) {
+                return false;
+            }
+        }
+        $scope.metadata.info.licenses.push({"licenseCode": licenseCode});
+        return false;
+    };
+    $scope.newCustomLicense = null;
 
 	$scope.newTag = null;
 	$scope.addTag = function(newTag){

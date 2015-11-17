@@ -164,7 +164,7 @@
       </p>
 		</div>
 	</div>			
-		
+
 		<div ng-show="metadata.opendata.isOpendata=='true'">
 			<div class="form-group">
 				<label for="inputDatasetOpendataAuthor" class="col-sm-2 control-label" translate>DATASET_FIELD_METADATA_OPENDATA_AUTHOR</label>
@@ -225,13 +225,56 @@
 		</div>
 	</div>
 
-	<div class="form-group">
+		<div class="form-group">
+			<label for="RadioGroupCustomLicense" class="col-sm-2 control-label"><span>Licenza custom</span></label>
+			<div class="col-sm-10  text-left">
+				<label class="radio-inline">
+             			<input type="radio" name="RadioGroupCustomLicense" value="true" id="RadioGroupCustomLicense_0" ng-model="customLicense">
+             			<span translate>YES</span>
+           		</label>
+				<label class="radio-inline">
+             			<input type="radio" name="RadioGroupCustomLicense" value="false" id="RadioGroupCustomLicense_1" ng-model="customLicense">
+             			<span translate>NO</span>
+           		</label>
+			</div>
+		</div>
+
+	<div class="form-group" ng-show="customLicense=='true'">
 		<label for="v" class="col-sm-2 control-label" translate>DATASET_FIELD_METADATA_LICENSE</label>
 		<div class="col-sm-10">
 			<textarea id="inputDatasetLicence" class="form-control" rows="4" resize="none" ng-model="metadata.info.license" placeholder="{{'DATASET_FIELD_METADATA_LICENSE'|translate}}"  >
 			</textarea>
 		</div>
-	</div>			
+	</div>
+
+	<div class="form-group" ng-show="customLicense=='false'">
+		<label for="v" class="col-sm-2 control-label" translate>DATASET_FIELD_METADATA_LICENSE</label>
+		<div class="col-sm-10">
+			<p>
+				<span ng-repeat="license in metadata.info.licenses">
+					<span class="label label-tag label-custom"><span ng-bind-html="license.licenseCode|translate"></span> &nbsp;
+					<a href="javascript:void(0)" ng-click='removeLicense($index)'class='close-button'>&times;</a>
+					</span> &nbsp;
+				</span>
+			</p>
+			<p>
+				<div class="input-group">
+					<select class="input-sm form-control" ng-model="newLicense" ng-options="license for license in licenses">
+						<option value="" ng-bind-html="'MANAGEMENT_EDIT_DATASET_TAG_PLACEHOLDER'|translate" ></option>
+					</select>
+				    <span class="input-group-btn">
+				    	<a class="btn  btn-sm btn-add" href="javascript:void(0)" ng-click='addLicense(newLicense)' title="{{'MANAGEMENT_EDIT_DATASET_ADD_TAG'|translate}}" >
+				    		<i class='glyphicon glyphicon-plus'></i>
+				    	</a>
+				    </span>
+  				</div>
+			</p>
+      <p>
+        <input type="text" ng-model="newCustomLicense">
+        <a ng-click="addLicense(newCustomLicense)">Add custom license</a>
+      </p>
+		</div>
+	</div>
 
 	<div class="form-group">
 		<label for="inputDatasetDisclaimer" class="col-sm-2 control-label" translate>DATASET_FIELD_METADATA_DISCLAIMER</label>
