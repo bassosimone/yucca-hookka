@@ -194,36 +194,6 @@
 			</div>		
 		</div>
 	</div>
-		
-		<div ng-show="metadata.opendata.isOpendata=='true'">
-			<div class="form-group">
-				<label for="inputDatasetOpendataAuthor" class="col-sm-2 control-label" translate>DATASET_FIELD_METADATA_OPENDATA_AUTHOR</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="inputDatasetOpendataAuthor" placeholder="{{'DATASET_FIELD_METADATA_OPENDATA_AUTHOR_PLACEHOLDER'|translate}}" 
-					ng-model="metadata.opendata.author" >
-				</div>
-			<!-- 	<div class="col-sm-6 form-hint">
-					<span class='hint-message' ng-bind-html="'MANAGEMENT_METADATA_OPENDATA_AUTHOR_HINT'|translate"></span>
-				</div>
-			-->				
-			</div>		
-			<div class="form-group">
-				<label for="inputDatasetDomain" class="col-sm-2 control-label"translate>DATASET_FIELD_METADATA_OPENDATA_LANG</label>
-				<div class="col-sm-10">
-					<select class="input-sm form-control" ng-model="metadata.opendata.language" ng-options="k as v for (k, v) in OPENDATA_LANGUAGES">
-    					<option value="" translate>DATASET_FIELD_METADATA_OPENDATA_LANG_PLACEHOLDER</option>
-    				</select>
-				</div>
-			</div>		
-			<div class="form-group">
-				<label for="inputDatasetOpendataDataUpdateDate" class="col-sm-2 control-label" translate>DATASET_FIELD_METADATA_OPENDATA_DATA_UPDATE_DATE</label>
-				<div class="col-sm-3">
-					<input type="date" class="form-control"  ng-model="metadata.opendata.dataUpdateDate"  close-text="Close" />
-				</div>
-				
-			</div>		
-		</div>
-	</div>
 
  <!-- box for opendata licenses -->
 	<div class="form-group" ng-show="metadata.opendata.isOpendata=='true'">
