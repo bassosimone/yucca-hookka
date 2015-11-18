@@ -828,7 +828,7 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
         "IODL", "ISC", "MIT", "GPLv3"
     ];
     $scope.removeLicense = function (index) {
-		$scope.metadata.info.licenses(index, 1);
+		$scope.metadata.info.licenses.splice(index, 1);
         return false;
     };
     $scope.newLicense = null;
