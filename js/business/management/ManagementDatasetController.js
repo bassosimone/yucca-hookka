@@ -823,16 +823,19 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
     };
     $scope.newCustomPersonalDataTag = null;
 
+    // Licenses:
+
     $scope.customLicense = 'false';
-    $scope.licenses = [
+
+    $scope.openLicenses = [
         "IODL", "ISC", "MIT", "GPLv3"
     ];
-    $scope.removeLicense = function (index) {
+    $scope.removeOpenLicense = function (index) {
 		$scope.metadata.info.licenses.splice(index, 1);
         return false;
     };
-    $scope.newLicense = null;
-    $scope.addLicense = function (licenseCode) {
+    $scope.newOpenLicense = null;
+    $scope.addOpenLicense = function (licenseCode) {
         if (!licenseCode) return false;
         for (var i = 0; i < $scope.metadata.info.licenses.length; ++i) {
             if ($scope.metadata.info.licenses[i].licenseCode === licenseCode) {
@@ -842,7 +845,26 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
         $scope.metadata.info.licenses.push({"licenseCode": licenseCode});
         return false;
     };
-    $scope.newCustomLicense = null;
+
+    $scope.closedLicenses = [
+        "evil-antani", "evil-mit", "evil-isc"
+    ];
+    $scope.removeClosedLicense = function (index) {
+		$scope.metadata.info.licenses.splice(index, 1);
+        return false;
+    };
+    $scope.newClosedLicense = null;
+    $scope.addClosedLicense = function (licenseCode) {
+        if (!licenseCode) return false;
+        for (var i = 0; i < $scope.metadata.info.licenses.length; ++i) {
+            if ($scope.metadata.info.licenses[i].licenseCode === licenseCode) {
+                return false;
+            }
+        }
+        $scope.metadata.info.licenses.push({"licenseCode": licenseCode});
+        return false;
+    };
+    $scope.newCustomClosedLicense = null;
 
 	$scope.newTag = null;
 	$scope.addTag = function(newTag){
