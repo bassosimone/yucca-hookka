@@ -762,6 +762,7 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
 		$scope.metadata.info.visibility = "public";
 		$scope.metadata.info.importFileType = "csv";
 		$scope.metadata.info.licenses = [];
+		$scope.metadata.info.restrictions = [];  // restriction of closed licenses
 		$scope.metadata.opendata.language = 'it';
 		$scope.metadata.opendata.isOpendata = 'false';
         $scope.metadata.personaldata.isPersonal = 'true';
@@ -865,6 +866,30 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
         return false;
     };
     $scope.newCustomClosedLicense = null;
+
+    $scope.licenseRestrictions = [
+        "no-money", "no-happiness", "no-sharing"
+    ];
+    $scope.removeLicenseRestriction = function (index) {
+		$scope.metadata.info.restrictions.splice(index, 1);
+        return false;
+    };
+    $scope.newLicenseRestriction = null;
+    $scope.addLicenseRestriction = function (restrictionCode) {
+        if (!restrictionCode) return false;
+        for (var i = 0; i < $scope.metadata.info.restrictions.length; ++i) {
+            if ($scope.metadata.info.restrictions[i].restrictionCode
+                    === restrictionCode) {
+                return false;
+            }
+        }
+        $scope.metadata.info.restrictions.push({
+                "restrictionCode": restrictionCode});
+        return false;
+    };
+    $scope.newCustomLicenseRestriction = null;
+
+    // Tags:
 
 	$scope.newTag = null;
 	$scope.addTag = function(newTag){
