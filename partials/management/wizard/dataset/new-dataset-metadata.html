@@ -195,8 +195,8 @@
 		</div>
 	</div>
 
- <!-- box for opendata licenses -->
-	<div class="form-group" ng-show="metadata.opendata.isOpendata=='true'">
+	<!-- box for opendata licenses -->
+	<div class="form-group" ng-show="metadata.info.visibility == 'public' && metadata.opendata.isOpendata == 'true'">
 		<label for="v" class="col-sm-2 control-label" translate>DATASET_FIELD_METADATA_LICENSE</label>
 		<div class="col-sm-10">
 			<p>
@@ -221,8 +221,8 @@
 		</div>
 	</div>
 
-<!-- box for closed-data licenses -->
-<div ng-show="metadata.opendata.isOpendata=='false'">
+	<!-- box for closed-data licenses -->
+	<div ng-show="metadata.info.visibility == 'private' || metadata.opendata.isOpendata == 'false'">
 		<div class="form-group">
 			<label for="RadioGroupCustomLicense" class="col-sm-2 control-label"><span>Licenza custom</span></label>
 			<div class="col-sm-10  text-left">
