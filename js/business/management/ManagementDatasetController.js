@@ -762,7 +762,6 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
 		$scope.metadata.info.visibility = "public";
 		$scope.metadata.info.importFileType = "csv";
 		$scope.metadata.info.licenses = [];
-		$scope.metadata.info.restrictions = [];  // restriction of closed licenses
 		$scope.metadata.opendata.language = 'it';
 		$scope.metadata.opendata.isOpendata = 'false';
         $scope.metadata.personaldata.isPersonal = 'true';
@@ -799,13 +798,28 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
 	});
 
     $scope.metadata.info.personalDataTags = [
-        {tagCode: "Antani"}
+        {tagCode: "- domotica"}
     ];
     $scope.personalDataTagList = [
-        "Antani",
-        "Mascetti",
-        "Sassaroli",
-        "Necchi"
+        "Finalità contestuali al servizio offerto",
+        "- caricamento dati su servizi di terze parti",
+        "- ottimizzazione del servizo",
+        "-- caching",
+        "-- a/b testing",
+        "-- supporto",
+        "Personalizzazione",
+        "- geolocalizzazione",
+        "- domotica",
+        "Profilazione",
+        "- marketing",
+        "-- attività b2b",
+        "-- attività b2c",
+        "--- profilazione commerciale per fini pubblicitari",
+        "--- profilazione per contatto diretto",
+        "- ricerca",
+        "Altre finalità",
+        "- statistica",
+        "- trasparenza e accountability"
     ];
     $scope.newPersonalDataTag = null;
     $scope.addPersonalDataTag = function (tagCode) {
@@ -829,7 +843,9 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
     $scope.customLicense = 'false';
 
     $scope.openLicenses = [
-        "IODL", "ISC", "MIT", "GPLv3"
+        "CC0 1.0 (CC0 1.0 Universal - Public Domain Dedication)", 
+        "CC BY 4.0 (Attribuzione 4.0 Internazionale)", 
+        "CC BY-SA 4.0 (Attribuzione - Condividi allo stesso modo 4.0 Internazionale)" 
     ];
     $scope.removeOpenLicense = function (index) {
 		$scope.metadata.info.licenses.splice(index, 1);
@@ -866,28 +882,6 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
         return false;
     };
     $scope.newCustomClosedLicense = null;
-
-    $scope.licenseRestrictions = [
-        "no-money", "no-happiness", "no-sharing"
-    ];
-    $scope.removeLicenseRestriction = function (index) {
-		$scope.metadata.info.restrictions.splice(index, 1);
-        return false;
-    };
-    $scope.newLicenseRestriction = null;
-    $scope.addLicenseRestriction = function (restrictionCode) {
-        if (!restrictionCode) return false;
-        for (var i = 0; i < $scope.metadata.info.restrictions.length; ++i) {
-            if ($scope.metadata.info.restrictions[i].restrictionCode
-                    === restrictionCode) {
-                return false;
-            }
-        }
-        $scope.metadata.info.restrictions.push({
-                "restrictionCode": restrictionCode});
-        return false;
-    };
-    $scope.newCustomLicenseRestriction = null;
 
     // Tags:
 

@@ -137,7 +137,7 @@
 		</div>
 
 	<div class="form-group" ng-show="metadata.personaldata.isPersonal=='true'">
-		<label for="inputDatasetAddPersonalDataTag" class="col-sm-2 control-label" translate>Personal data tags</label>
+		<label for="inputDatasetAddPersonalDataTag" class="col-sm-2 control-label" translate>Finalità del trattamento dati personali</label>
 		<div class="col-sm-10 text-left">
 			<p>
 				<span  ng-repeat="tag in metadata.info.personalDataTags">
@@ -269,35 +269,6 @@
 			</p>
 		</div>
 	</div>
-
-	<div class="form-group" ng-show="customLicense=='true'">
-		<label for="inputDatasetDisclaimer" class="col-sm-2 control-label" translate>DATASET_FIELD_METADATA_DISCLAIMER</label>
-  <div class="col-sm-10 text-left">
-   <p>
-    <span  ng-repeat="restriction in metadata.info.restrictions">
-     <span class="label label-tag label-custom"><span ng-bind-html="restriction.restrictionCode|translate"></span> &nbsp;
-     <a href="javascript:void(0)" ng-click='removeLicenseRestriction($index)'  class='close-button'>&times;</a>
-     </span> &nbsp;
-    </span>
-   </p>
-   <p>
-    <div class="input-group">
-     <select class="input-sm form-control" ng-model="newLicenseRestriction" ng-options="restriction for restriction in licenseRestrictions">
-      <option value="" ng-bind-html="'MANAGEMENT_EDIT_DATASET_TAG_PLACEHOLDER'|translate" ></option>
-     </select>
-        <span class="input-group-btn">
-         <a class="btn  btn-sm btn-add"  href="javascript:void(0)" ng-click='addLicenseRestriction(newLicenseRestriction)' title="{{'MANAGEMENT_EDIT_DATASET_ADD_TAG'|translate}}" >
-          <i class='glyphicon glyphicon-plus'></i>
-         </a>
-        </span>
-      </div>
-   </p>
-			<p>
-				<input type="text" ng-model="newCustomLicenseRestriction">
-				<a ng-click="addLicenseRestriction(newCustomLicenseRestriction)">Add custom license restriction</a>
-			</p>
-		</div>
-	</div>			
 </div>
 
 	<div class="form-group">
