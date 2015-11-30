@@ -845,7 +845,8 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
     $scope.openLicenses = [
         "CC0 1.0 (CC0 1.0 Universal - Public Domain Dedication)", 
         "CC BY 4.0 (Attribuzione 4.0 Internazionale)", 
-        "CC BY-SA 4.0 (Attribuzione - Condividi allo stesso modo 4.0 Internazionale)" 
+        "CC BY-SA 4.0 (Attribuzione - Condividi allo stesso modo 4.0 Internazionale)",
+        "ODC ODbL 1.0 (Open Database License)" 
     ];
     $scope.removeOpenLicense = function (index) {
 		$scope.metadata.info.licenses.splice(index, 1);
@@ -864,7 +865,8 @@ appControllers.controller('ManagementNewDatasetWizardCtrl', [ '$scope', '$route'
     };
 
     $scope.closedLicenses = [
-        "evil-antani", "evil-mit", "evil-isc"
+        "CC BY-NC 4.0 (Attribuzione-NonCommerciale 4.0 Internazionale)", 
+        "Copyright: All Rights Reserved (just available for personal, non commercial use)" 
     ];
     $scope.removeClosedLicense = function (index) {
 		$scope.metadata.info.licenses.splice(index, 1);
